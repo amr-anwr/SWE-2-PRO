@@ -1,5 +1,7 @@
 <?php
-$id= $_GET['id'];
+session_start();
+
+$id= $_SESSION['id'];
 $company = json_decode(file_get_contents("http://localhost:3000/companies?id=$id"));
 $quizzes = json_decode(file_get_contents("http://localhost:3000/quizzes"));
 $required_quizzes=array();
@@ -37,8 +39,8 @@ foreach ($quizzes as $quiz) {
     <!--===============================================================================================-->
 </head>
 <body>
-
-<div class="limiter">
+<div class="limiter" id="z">
+    <h1 style="margin-left: 38%; color:white; padding-top:5px;">Welcome <?php echo $_SESSION['name'] ?></h1>
     <div class="container-table100">
         <div class="wrap-table100">
             <div class="table100 ver1">
@@ -112,7 +114,7 @@ foreach ($quizzes as $quiz) {
 
     });
 
-
+    z.style.backgroundImage ="url(am.jpg)";
 
 
 </script>

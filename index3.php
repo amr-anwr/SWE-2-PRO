@@ -1,6 +1,9 @@
 <?php
+session_start();
+
 $user = json_decode(file_get_contents("http://localhost:3000/users?email=john@gmail.com"));
-$user_interests = $user[0]->interests;
+$num = $_SESSION['id']-1;
+$user_interests = $user[$num]->interests;
 $quizzes = json_decode(file_get_contents("http://localhost:3000/quizzes"));
 $recommended_quizzes = array();
 foreach ($quizzes as $quiz) {
@@ -45,7 +48,8 @@ foreach ($quizzes as $quiz) {
 </head>
 <body>
 
-<div class="limiter">
+<div class="limiter" id="z">
+    <h1 style="margin-left: 38%; color:white; padding-top:5px;">Welcome <?php echo $_SESSION['name'] ?></h1>
     <div class="container-table100">
         <div class="wrap-table100">
             <div class="table100 ver1">
@@ -113,7 +117,7 @@ foreach ($quizzes as $quiz) {
 
     });
 
-
+    z.style.backgroundImage ="url(am.jpg)";
 
 
 </script>
